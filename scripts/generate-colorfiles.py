@@ -5,8 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 COLORS_DIR = ROOT / "colors"
-GENERATED_DIR = COLORS_DIR / "generated"
-GENERATED_DIR.mkdir(parents=True, exist_ok=True)
+COLORS_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def main() -> None:
@@ -30,11 +29,11 @@ bearded.load("%s")
 """
 
     for slug in slugs:
-        target = GENERATED_DIR / f"bearded-{slug}.lua"
+        target = COLORS_DIR / f"bearded-{slug}.lua"
         target.write_text(base % slug, encoding="utf-8")
 
     # Root colorscheme remains 'bearded'
-    print(f"Wrote {len(slugs)} colorscheme files to {GENERATED_DIR.relative_to(ROOT)}")
+    print(f"Wrote {len(slugs)} colorscheme files to {COLORS_DIR.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":
