@@ -264,6 +264,7 @@ end
 
 local function plugin_groups(colors, ui, levels)
   local primary = ui.primary or colors.blue or colors.teal
+  local leap = require("bearded.plugins.leap").highlights(ui, colors)
   local neo_tree = require("bearded.plugins.neotree").highlights(ui, colors)
   local treesitter_context = require("bearded.plugins.treesitter_context").highlights(ui, colors)
   local noice = require("bearded.plugins.noice").highlights(ui, colors)
@@ -321,6 +322,7 @@ local function plugin_groups(colors, ui, levels)
     },
   }
 
+  merge(g, leap)
   merge(g, neo_tree)
   merge(g, treesitter_context)
   merge(g, noice)
